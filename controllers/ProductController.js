@@ -16,6 +16,15 @@ class ProductController {
       return res.status(500).json(e.message);
     }
   }
+  async getAll(req, res) {
+    try {
+      const products = await Product.findAll();
+      return res.json(products);
+    } catch (e) {
+      console.log(e);
+      return res.status(500).json({ error: "Something went wrong" });
+    }
+  }
   async update(req, res) {}
   async delete(req, res) {}
 }
